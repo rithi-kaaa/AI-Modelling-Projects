@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Car Insurance Claim Prediction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      background-color: #FFCCCC; /* Lightest shade of pink */
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    .input-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px;
+    }
+      
+    }
+
+    input[type="text"], input[type="radio"] {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 250px;
+    }
+
+    label {
+      margin-bottom: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    p {
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Car Insurance Claim Prediction</h1>
+
+  <form action="/predict" method="post">
+    <div class="input-column">
+      <input type="text" name="age_of_car" placeholder="Age of car" required>
+      <input type="text" name="age_of_policyholder" placeholder="Age of policyholder" required>
+      <input type="text" name="area_cluster" placeholder="Area cluster" required>
+      <input type="text" name="population_density" placeholder="Population density" required>
+      <input type="text" name="make" placeholder="Make of the car" required>
+      <input type="text" name="segment" placeholder="Car segment" required>
+      <input type="text" name="model" placeholder="Car model" required>
+      <input type="text" name="fuel_type" placeholder="Fuel type" required>
+      <input type="text" name="max_torque" placeholder="Max torque" required>
+      <input type="text" name="max_power" placeholder="Max power" required>
+      <input type="text" name="engine_type" placeholder="Engine type" required>
+      <input type="text" name="airbags" placeholder="Number of airbags" required>
+    </div>
+    <div class="input-column">
+      <input type="text" name="rear_brakes_type" placeholder="Rear Brakes Type" required>
+      <input type="text" name="displacement" placeholder="Displacement" required>
+      <input type="text" name="cylinder" placeholder="Number of cylinders" required>
+      <input type="text" name="transmission_type" placeholder="Transmission type" required>
+      <input type="text" name="gear_box" placeholder="Gear box" required>
+      <input type="text" name="steering_type" placeholder="Steering type" required>
+      <input type="text" name="turning_radius" placeholder="Turning radius" required>
+      <input type="text" name="length" placeholder="Length" required>
+      <input type="text" name="width" placeholder="Width" required>
+      <input type="text" name="height" placeholder="Height" required>
+      <input type="text" name="gross_weight" placeholder="Gross weight" required>
+    </div>
+    <div class="input-column">
+      <label>Is Front Fog Lights:
+        <input type="radio" name="is_front_fog_lights" value="Yes" required>Yes
+        <input type="radio" name="is_front_fog_lights" value="No" required>No
+      </label>
+      <label>Is Rear Window Wiper:
+        <input type="radio" name="is_rear_window_wiper" value="Yes" required>Yes
+        <input type="radio" name="is_rear_window_wiper" value="No" required>No
+      </label>
+      <label>Is Rear Window Washer:
+        <input type="radio" name="is_rear_window_washer" value="Yes" required>Yes
+        <input type="radio" name="is_rear_window_washer" value="No" required>No
+      </label>
+      <label>Is Rear Window Defogger:
+        <input type="radio" name="is_rear_window_defogger" value="Yes" required>Yes
+        <input type="radio" name="is_rear_window_defogger" value="No" required>No
+      </label>
+      <label>Is Brake Assist:
+        <input type="radio" name="is_brake_assist" value="Yes" required>Yes
+        <input type="radio" name="is_brake_assist" value="No" required>No
+      </label>
+      <label>Power Door Locks:
+        <input type="radio" name="is_power_door_locks" value="Yes" required>Yes
+        <input type="radio" name="is_power_door_locks" value="No" required>No
+      </label>
+      <label>Central Locking:
+        <input type="radio" name="is_central_locking" value="Yes" required>Yes
+        <input type="radio" name="is_central_locking" value="No" required>No
+      </label>
+      <label>Power Steering:
+        <input type="radio" name="is_power_steering" value="Yes" required>Yes
+        <input type="radio" name="is_power_steering" value="No" required>No
+      </label>
+      <label>Driver Seat Height Adjustable:
+        <input type="radio" name="is_driver_seat_height_adjustable" value="Yes" required>Yes
+        <input type="radio" name="is_driver_seat_height_adjustable" value="No" required>No
+      </label>
+      <label>Day/Night Rear View Mirror:
+        <input type="radio" name="is_day_night_rear_view_mirror" value="Yes" required>Yes
+        <input type="radio" name="is_day_night_rear_view_mirror" value="No" required>No
+      </label>
+      <label>Engine Check Warning:
+        <input type="radio" name="is_ecw" value="Yes" required>Yes
+        <input type="radio" name="is_ecw" value="No" required>No
+      </label>
+      <label>Speed Alert:
+        <input type="radio" name="is_speed_alert" value="Yes" required>Yes
+        <input type="radio" name="is_speed_alert" value="No" required>No
+      </label>
+    </div>
+    <div class="input-column">
+      <label>Tire Pressure Monitoring System (TPMS):
+        <input type="radio" name="is_tpms" value="Yes" required>Yes
+        <input type="radio" name="is_tpms" value="No" required>No
+      </label>
+      <label>Parking Sensors:
+        <input type="radio" name="is_parking_sensors" value="Yes" required>Yes
+        <input type="radio" name="is_parking_sensors" value="No" required>No
+      </label>
+      <label>Parking Camera:
+        <input type="radio" name="is_parking_camera" value="Yes" required>Yes
+        <input type="radio" name="is_parking_camera" value="No" required>No
+      </label>
+      <input type="text" name="ncap_rating" placeholder="NCAP Rating" required>
+    </div>
+
+    <button type="submit">Predict if car insurance can be claimed</button>
+  </form>
+
+  <p>{{car_insurance_claim_prediction}}</p>
+</body>
+</html>
